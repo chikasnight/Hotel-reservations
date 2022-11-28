@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AvailableRoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('stripe', function () {
+    return view('stripe');
+});
+
+
+Route::controller(AvailableRoomController::class)->group(function(){
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
+
